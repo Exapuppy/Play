@@ -1,0 +1,755 @@
+﻿<Window x:Class="Play.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Play" Height="735" Width="434" 
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <!-- Minimize Button -->
+        <Storyboard x:Key="MiniMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Minimize00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Minimize01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MiniLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Minimize01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Minimize00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!-- CloseWindow Button -->
+        <Storyboard x:Key="CloseMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="CloseWindow02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--SmallWindow Button -->
+        <Storyboard x:Key="SmallMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SmallLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SmallAClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SmallClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SmallWindow02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--///////////////////-->
+        <!--Pred-->
+        <Storyboard x:Key="PredMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PredLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PredClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p01" BeginTime="0:0:0.5">
+                <EasingDoubleKeyFrame  KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pred_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>-->
+        </Storyboard>
+        <!--Play-->
+        <Storyboard x:Key="PlayMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PlayLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PlayClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Play_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <!--index-->
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPlay">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexStop">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPause">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--Pause-->
+        <Storyboard x:Key="PauseMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PauseLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PauseClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Pause_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <!--index-->
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPlay">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexStop">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPause">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--Stop-->
+        <Storyboard x:Key="StopMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="StopLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="StopClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Stop_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <!--index-->
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPlay">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexStop">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="IndexPause">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--Next-->
+        <Storyboard x:Key="NextMove">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="NextLeave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p00">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="NextClick">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p01">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Next_p02">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!--Slider Style-->
+        <Style TargetType="{x:Type Slider}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid x:Name="GridRoot" Background="Gray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" Opacity="1">
+                                <Track.Thumb>
+                                    <Thumb MinWidth="1" MinHeight="4" Background="White" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="Slider.IncreaseLarge" Background="Gray" 
+                                                          Visibility="Visible" Opacity="0.001"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="Slider.DecreaseLarge" Background="White" 
+                                                          BorderBrush="Transparent" BorderThickness="0" Opacity="1" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Width="410" Height="700" VerticalAlignment="Top">
+        <Grid Name="PlayerWindow"  Width="410" Height="110" VerticalAlignment="Top" Background="#01be96">
+            <Grid Name="Navigation_Panel"
+                    Width="410" Height="20" VerticalAlignment="Top"
+                    Opacity="1">
+                <!--Minimize-->
+                <Image Name="Minimize00" Opacity="0.7" Stretch="Fill" Source="Elements/Down_Window01.png"  
+                    Margin="0,0,60,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Down_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource MiniMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource MiniLeave}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Minimize01" Opacity="0" Stretch="Fill" Source="Elements/Down_Window00.png"  
+                    Margin="0,0,60,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Down_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource MiniMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource MiniLeave}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Small-->
+                <Image Name="SmallWindow00" Opacity="0.7" Stretch="Fill" Source="Elements/Window_Small01.png"  
+                    Margin="0,0,40,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Small_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource SmallMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource SmallLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource SmallAClick}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonUp">
+                            <BeginStoryboard Storyboard="{StaticResource SmallClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="SmallWindow01" Opacity="0.0" Stretch="Fill" Source="Elements/Window_Small00.png"  
+                    Margin="0,0,40,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Small_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource SmallMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource SmallLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource SmallAClick}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonUp">
+                            <BeginStoryboard Storyboard="{StaticResource SmallClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="SmallWindow02" Opacity="0.0" Stretch="Fill" Source="Elements/Window_Small02.png"  
+                    Margin="0,0,40,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Small_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource SmallMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource SmallLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource SmallAClick}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonUp">
+                            <BeginStoryboard Storyboard="{StaticResource SmallClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Close-->
+                <Image Name="CloseWindow00" Opacity="0.6" Stretch="Fill" Source="Elements/Close_Window01.png"  
+                    Margin="0,0,20,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Close_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource CloseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource CloseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource CloseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="CloseWindow01" Opacity="0" Stretch="Fill" Source="Elements/Close_Window00.png"  
+                    Margin="0,0,20,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Close_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource CloseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource CloseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource CloseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="CloseWindow02" Opacity="0" Stretch="Fill" Source="Elements/Close_Window02.png"  
+                    Margin="0,0,20,0" Height="18" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                    MouseLeftButtonDown="Close_Window">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource CloseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource CloseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource CloseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                
+                <!-- /////////////////////////////// -->
+                <Line X1="0" X2="410" Y1="20" Y2="20" Stroke="White" StrokeThickness="1" Opacity="0.5" />
+                <Rectangle Margin="0,0,20,2" Opacity="0.5" HorizontalAlignment="Right" Width="60" 
+                           Stroke="White" StrokeThickness="1" />
+                <Rectangle Margin="0,0,40,0" Opacity="0.5"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Height="18" Width="20" 
+                           Stroke="White" StrokeThickness="1" />
+                <!-- /////////////////////////////// -->
+                <Image Name="Top_for_Drag" Stretch="Fill" Source="Elements/Down_Window00.png" Opacity="0" 
+                    Margin="0,0,0,0" Width="330" Height="20" HorizontalAlignment="Left"
+                    MouseLeftButtonDown="Drag_Window"/>
+                <Image Name="Top_for_Drag2" Stretch="Fill" Source="Elements/Down_Window00.png" Opacity="0" 
+                    Margin="0,0,0,0" Width="20" Height="20" HorizontalAlignment="Right"
+                    MouseLeftButtonDown="Drag_Window"/>
+            </Grid>
+            <Grid Name="Left_Block" Margin="0,20,280,0">
+                <!--Pred-->
+                <Image Name="Pred_p00" Opacity="1" Stretch="Fill" Source="Elements/Pred01.png"  
+                    Margin="0,67,0,0" MouseLeftButtonDown="Prev" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PredMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PredLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PredClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Pred_p01" Opacity="0" Stretch="Fill" Source="Elements/Pred00.png"  
+                    Margin="0,67,0,0" MouseLeftButtonDown="Prev" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PredMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PredLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PredClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Pred_p02" Opacity="0" Stretch="Fill" Source="Elements/Pred02.png"  
+                    Margin="0,67,0,0" MouseLeftButtonDown="Prev" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PredMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PredLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PredClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Play-->
+                <Image Name="Play_p00" Opacity="1" Stretch="Fill" Source="Elements/Play01.png"  
+                    Margin="26,67,0,0" MouseLeftButtonDown="Play" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PlayMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PlayLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PlayClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Play_p01" Opacity="0" Stretch="Fill" Source="Elements/Play00.png"  
+                    Margin="26,67,0,0" MouseLeftButtonDown="Play" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PlayMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PlayLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PlayClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Play_p02" Opacity="0" Stretch="Fill" Source="Elements/Play02.png"  
+                    Margin="26,67,0,0" MouseLeftButtonDown="Play" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PlayMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PlayLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PlayClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Pause-->
+                <Image Name="Pause_p00" Opacity="1" Stretch="Fill" Source="Elements/Pause01.png"  
+                    Margin="52,67,0,0" MouseLeftButtonDown="Pause" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PauseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PauseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PauseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Pause_p01" Opacity="0" Stretch="Fill" Source="Elements/Pause00.png" 
+                    Margin="52,67,0,0" MouseLeftButtonDown="Pause" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PauseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PauseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PauseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Pause_p02" Opacity="0" Stretch="Fill" Source="Elements/Pause02.png"  
+                    Margin="52,67,0,0" MouseLeftButtonDown="Pause" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource PauseMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource PauseLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource PauseClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Stop-->
+                <Image Name="Stop_p00" Opacity="1" Stretch="Fill" Source="Elements/Begin01.png"  
+                    Margin="78,67,0,0" MouseLeftButtonDown="Stop" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource StopMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource StopLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource StopClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Stop_p01" Opacity="0" Stretch="Fill" Source="Elements/Begin00.png"  
+                    Margin="78,67,0,0" MouseLeftButtonDown="Stop" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource StopMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource StopLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource StopClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Stop_p02" Opacity="0" Stretch="Fill" Source="Elements/Begin02.png"  
+                    Margin="78,67,0,0" MouseLeftButtonDown="Stop" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource StopMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource StopLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource StopClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Next-->
+                <Image Name="Next_p00" Opacity="1" Stretch="Fill" Source="Elements/Next01.png"  
+                    Margin="104,67,0,0" MouseLeftButtonDown="Next" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource NextMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource NextLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource NextClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Next_p01" Opacity="0" Stretch="Fill" Source="Elements/Next00.png"  
+                    Margin="104,67,0,0" MouseLeftButtonDown="Next" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource NextMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource NextLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource NextClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Name="Next_p02" Opacity="0" Stretch="Fill" Source="Elements/Next02.png"  
+                    Margin="104,67,0,0" MouseLeftButtonDown="Next" HorizontalAlignment="Left" Width="26">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseMove">
+                            <BeginStoryboard Storyboard="{StaticResource NextMove}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource NextLeave}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            <BeginStoryboard Storyboard="{StaticResource NextClick}"/>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!--Volume-->
+                <Image Name="Volume_Push_ON" Opacity="1" Stretch="Fill" Source="Elements/Speac01.png"  
+                    Margin="2,44,0,23" MouseLeftButtonDown="Volume_Push_Reaction" HorizontalAlignment="Left" Width="24" />
+                <Image Name="Volume_Push_OFF" Opacity="0" Stretch="Fill" Source="Elements/Speac00.png"  
+                    Margin="2,44,0,23" MouseLeftButtonDown="Volume_Push_Reaction" HorizontalAlignment="Left" Width="24" />
+                <!--///////////////-->
+                <Line Margin="0,0,0,23" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="130" Y1="0" Y2="0"/>
+                
+                <Line Margin="26,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="0" Y1="0" Y2="23"/>
+                <Line Margin="52,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="0" Y1="0" Y2="23"/>
+                <Line Margin="78,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="0" Y1="0" Y2="23"/>
+                <Line Margin="104,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="0" Y1="0" Y2="23"/>
+                <!--///////////////-->
+                <Label Name="Time" Content="0:00" 
+                    Height="41" HorizontalAlignment="Left" Margin="52,0,0,0" VerticalAlignment="Top" Width="78" 
+                    FontFamily="Arial" FontSize="30" Foreground="White" 
+                    HorizontalContentAlignment="Right" VerticalContentAlignment="Top"/>
+                <Label Name="kb_s" Content="1045 Kb/s" Opacity="1"
+                    Height="18" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="52" 
+                    FontFamily="Arial" FontSize="8" Foreground="White" 
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Name="KHz" Content="44 KHz" 
+                    Height="18" HorizontalAlignment="Left" Margin="0,13,0,0" VerticalAlignment="Top" Width="52" 
+                    FontFamily="Arial" FontSize="8" Foreground="White" 
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Name="Mono_Stereo" Content="STEREO" 
+                    Height="18" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Width="52" 
+                    FontFamily="Arial" FontSize="8" Foreground="White" 
+                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <!--Volume Slider-->
+                <Slider Name="VolumeIndicator" 
+                        Height="4" HorizontalAlignment="Left" Margin="26,54,0,0" VerticalAlignment="Top" Width="100" 
+                        Minimum="0"/>
+            </Grid>
+            <Grid Name="Right_Block" Margin="130,20,0,0">
+                <!--Song Name-->
+                <Label Name="Time_of_Composition" Content="3:08" 
+                    Height="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="42" 
+                    FontFamily="Arial" FontSize="13" Foreground="White" 
+                    HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                <!--Song Time-->
+                <Label Name="Composition" Content="Deftones - Diamond Eyes" 
+                    Height="23" Margin="21,0,42,0" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="13" Foreground="White" 
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                <!--Index-->
+                <Image Name="IndexStop" Opacity="1" Stretch="Fill" Source="Elements/Begin01.png"  
+                    Margin="5,0,0,4" HorizontalAlignment="Left" Width="13" Height="13" VerticalAlignment="Bottom" />
+                <Image Name="IndexPlay" Opacity="0" Stretch="Fill" Source="Elements/Play01.png"  
+                    Margin="5,0,0,4" HorizontalAlignment="Left" Width="13" Height="13" VerticalAlignment="Bottom" />
+                <Image Name="IndexPause" Opacity="0" Stretch="Fill" Source="Elements/Pause01.png"  
+                    Margin="5,0,0,4" HorizontalAlignment="Left" Width="13" Height="13" VerticalAlignment="Bottom" />
+                <!--Informations-->
+                <Label Name="Composition_Name" Content="Название: Diamond Eyes" Opacity="1"
+                    Height="24" HorizontalAlignment="Left" Margin="2,0,0,0" VerticalAlignment="Top" Width="190" 
+                    FontFamily="Arial" FontSize="10" Foreground="White" 
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+                <Label Name="Autor" Content="Исполнитель: Deftones" 
+                    Height="24" HorizontalAlignment="Left" Margin="2,14,0,0" VerticalAlignment="Top" Width="190" 
+                    FontFamily="Arial" FontSize="10" Foreground="White" 
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+                <Label Name="Album" Content="Альбом: Diamond Eyes" HorizontalAlignment="Left" Margin="2,28,0,0" Width="190" 
+                    FontFamily="Arial" FontSize="10" Foreground="White" 
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Height="23" VerticalAlignment="Top" />
+                <!--Song Slider-->
+                <Slider Name="SongIndicator" 
+                        Height="4" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Width="270"
+                        MouseMove="SongPositionInst" MouseLeftButtonDown="SongPositionDownM" MouseLeftButtonUp="SongPositionUpM"/>
+                <!--////-->
+                <Line Margin="0,0,0,0" HorizontalAlignment="Left" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="0" Y1="0" Y2="90"/>
+                <Line Margin="0,0,0,23" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="White" StrokeThickness="1" Opacity="0.5"
+                      X1="0" X2="280" Y1="0" Y2="0"/>
+            </Grid>
+        </Grid>
+        <Grid Name="PlaylistPanel" Opacity="1" Background="#01be96" 
+            Height="590" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="410">
+             <ListBox Name="PlayList" Background="#01be96" Opacity="1" BorderBrush="Transparent" Margin="0,0,0,0"
+                      FontFamily="Arial" FontSize="12" FontStretch="Normal" Foreground="White" >
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>
